@@ -1,6 +1,25 @@
-class Cabbage {
-	// Requirement #1: Complete Cabbage Class
-
+class Cabbage extends Item {
+  // Requirement #1: Complete Cabbage Class
+  float []cabbageX,cabbageY;
+  Cabbage(float x, float y){
+    super(x,y);
+    img = cabbage;
+  }
+  void display(){
+    for(int i = 0; i < cabbageX.length; i++){
+      image(cabbage, cabbageX[i], cabbageY[i]);}
+  }
+  void checkCollision(Player player){
+    for(int i = 0; i < cabbageX.length; i++){
+      if(player.health < player.PLAYER_MAX_HEALTH
+        && isHit(cabbageX[i], cabbageY[i], SOIL_SIZE, SOIL_SIZE, player.x, player.y, player.w, player.h)){
+  
+          player.health ++;
+          cabbageX[i] = cabbageY[i] = -1000;
+          isAlive=false;
+       }
+    }
+  }
 	/*
 	Code for Reference:
 
