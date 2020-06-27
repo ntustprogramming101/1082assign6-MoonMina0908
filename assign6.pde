@@ -170,11 +170,11 @@ void initGame(){
     if(items[i]==null || !items[i].isAlive){
       float newX = SOIL_SIZE * floor(random(SOIL_COL_COUNT));
       float newY = SOIL_SIZE * ( i * 4 + floor(random(4)));
-      float create = floor(random(1));
-      if(create==0){
+      float create = floor(random(2));
+      if(create%2==0){
         items[i] = new Cabbage(newX,newY);
       }
-      else if(create==1){items[i] = new Clock(newX,newY);}
+      else if(create%2==1){items[i] = new Clock(newX,newY);}
     }
 	}
 }
