@@ -2,22 +2,13 @@ class Dinosaur extends Enemy{
 	// Requirement #4: Complete Dinosaur Class
   float speed = 2f/2;
 	final float TRIGGERED_SPEED_MULTIPLIER = 5;
+  int state=0;
+  
   Dinosaur(float x, float y){
     super(x,y);
-    img=dinosaur;
   }
   void display(){
-    int direction = (speed > 0) ? RIGHT : LEFT;
-    pushMatrix();
-    translate(x,y);
-    if(direction==RIGHT){
-      scale(1,1);
-      image(img,0,0,w,h);
-    }else{
-      scale(-1,1);
-      image(img,-w,0,w,h);
-    }
-    popMatrix();
+    
   }
   void update(){
     x += speed;
