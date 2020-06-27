@@ -3,10 +3,11 @@ class Item {
 	float x, y;
 	float w = SOIL_SIZE;
 	float h = SOIL_SIZE;
-  PImage img;
 
 	void display(){}
-	void checkCollision(Player player){}
+	void checkCollision(Player player){
+
+}
 
 	Item(float x, float y){
 		isAlive = true;
