@@ -1,21 +1,34 @@
 class Dinosaur extends Enemy{
 	// Requirement #4: Complete Dinosaur Class
-  float speed = 2f/2;
-	final float TRIGGERED_SPEED_MULTIPLIER = 5;
-  int state=0;
+  float speed = 1f;
+	boolean state=false;
+  PImage img;
+  float Xspeed=speed;
+  
   
   Dinosaur(float x, float y){
     super(x,y);
+    img=dinosaur;
   }
   void display(){
-    
+    if(x<0||x>width-w){Xspeed*=-1;}
+    int face=(Xspeed>0)?RIGHT:LEFT;;
+    pushMatrix();
+    translate(x,y);
+    if(face==RIGHT){scale(1,1);image(img,0,0,w,h);}
+    else{scale(-1,1);image(img,-w,0,w,h);}
+    popMatrix();
   }
   void update(){
-    x += speed;
-    if(x<0||x>width-dinosaur.width){
-      speed *=-1;
+    x+=Xspeed;
+    if(player.y==y&&((x+w<player.x&&!state&&Xspeed>0)||(x>player.x&&!state&&Xspeed<0))){
+      Xspeed*=5;
+      state=true;
     }
-    
+    else if(state){
+      Xspeed/=5;
+      state=false;
+    }
   }
   
 	// HINT: Player Detection in update()
